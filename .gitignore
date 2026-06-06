@@ -1,0 +1,6 @@
+# open-aisle.com (GitHub Pages) only serves index.html + CNAME.
+# Ignore everything else in this folder so local prototypes are never published.
+/*
+!index.html
+!CNAME
+!.gitignore
