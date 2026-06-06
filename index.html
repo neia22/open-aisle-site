@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenAisle — Coming soon</title>
+<meta name="description" content="A seat at the world's celebrations. OpenAisle is coming soon — couples, register your interest in hosting." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%20fill='none'%3E%3Cpath%20d='M9%2043%20L9%2022%20A15%2015%200%200%201%2039%2022%20L39%2043'%20stroke='%23C2611B'%20stroke-width='3.4'%20stroke-linecap='round'/%3E%3Cpath%20d='M17%2043%20L17%2024%20A7%207%200%200%201%2031%2024%20L31%2043'%20stroke='%23C2611B'%20stroke-width='2'%20stroke-linecap='round'%20opacity='0.55'/%3E%3C/svg%3E" />
+<meta property="og:title" content="OpenAisle — A seat at the world's celebrations" />
+<meta property="og:description" content="OpenAisle is coming soon. Couples — register your interest in opening a few seats at your wedding." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://open-aisle.com/" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --saffron:#DE7A2C; --saffron-deep:#C2611B; --saffron-soft:#F0A463; --saffron-tint:#FBE9D6;
+  --claret:#7E2741; --claret-deep:#631C32;
+  --sage:#71805C; --sage-deep:#586748; --positive:#5C7048; --positive-tint:#E7EBDD;
+  --gold:#B08A4F; --danger:#B23A2E; --danger-tint:#F6DED9;
+  --ink:#251C1A; --ink-2:#5B514B; --ink-3:#8B817A; --ink-4:#B6ADA3;
+  --ivory:#FBF5EC; --ivory-deep:#F3EADD; --paper:#FFFDF8; --paper-pure:#fff;
+  --border:#E8DECF; --border-strong:#D8CAB3;
+  --shadow-sm:0 1px 2px rgba(58,40,22,.05),0 2px 6px rgba(58,40,22,.06);
+  --shadow-md:0 2px 4px rgba(58,40,22,.05),0 8px 20px rgba(58,40,22,.09);
+  --shadow-lg:0 4px 10px rgba(58,40,22,.07),0 20px 44px rgba(58,40,22,.13);
+  --ring-inset:inset 0 0 0 1px rgba(58,40,22,.06);
+  --r-md:14px; --r-lg:20px; --r-xl:28px; --r-pill:999px;
+  --font-display:'Cormorant Garamond','Hoefler Text',Georgia,serif;
+  --font-sans:'Hanken Grotesk','Helvetica Neue',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+
+/* atmosphere */
+.page{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;}
+.page::before{content:"";position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:760px;background:radial-gradient(circle,rgba(222,122,44,.18),transparent 62%);pointer-events:none;z-index:0;}
+.wrap{width:100%;max-width:980px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+
+/* top bar */
+.bar{padding:26px 0;}
+.lock{display:inline-flex;align-items:center;gap:10px;}
+.lock .mk{width:30px;height:30px;color:var(--saffron-deep);display:inline-flex;}
+.lock .wd{font-family:var(--font-display);font-weight:600;font-size:23px;line-height:1;color:var(--ink);}
+.lock .wd b{color:var(--saffron-deep);font-weight:600;}
+
+/* hero */
+.hero{text-align:center;padding:30px 0 14px;}
+.eyebrow{font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron-deep);display:inline-flex;align-items:center;gap:9px;}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--saffron);display:inline-block;animation:pulse 2.4s var(--ease) infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(44px,7vw,80px);line-height:.98;letter-spacing:-.015em;margin:18px 0 0;}
+.hero h1 i{font-style:italic;color:var(--claret);}
+.hero .lede{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2.5vw,27px);line-height:1.4;color:var(--ink-2);margin:20px auto 0;max-width:620px;}
+.hero .sub{font-size:16px;color:var(--ink-2);margin:18px auto 0;max-width:520px;line-height:1.6;}
+
+/* divider */
+.rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:40px 0 4px;color:var(--gold);}
+.rule::before,.rule::after{content:"";height:1px;width:90px;background:var(--gold);opacity:.6;}
+.rule .mk{width:22px;height:22px;display:inline-flex;color:var(--saffron-deep);}
+
+/* form card */
+.card{background:var(--paper);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);max-width:620px;margin:34px auto 0;padding:38px 38px 32px;}
+.card .key{text-align:center;margin-bottom:24px;}
+.card .key .eyebrow{margin-bottom:12px;}
+.card .key h2{font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3.2vw,36px);line-height:1.06;margin:10px 0 0;}
+.card .key h2 i{font-style:italic;color:var(--claret);}
+.card .key p{font-size:15px;color:var(--ink-2);margin:12px auto 0;max-width:440px;line-height:1.6;}
+
+form{display:grid;gap:16px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:13px;font-weight:600;color:var(--ink);}
+.field label .req{color:var(--saffron-deep);}
+.field input,.field textarea{font-family:var(--font-sans);font-size:14.5px;color:var(--ink);background:var(--paper-pure);border:1px solid var(--border-strong);border-radius:var(--r-md);padding:12px 14px;outline:none;transition:all .15s var(--ease);width:100%;}
+.field textarea{resize:vertical;min-height:96px;line-height:1.55;}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3);}
+.field input:focus,.field textarea:focus{border-color:var(--saffron);box-shadow:0 0 0 3px var(--saffron-soft);}
+.field input.bad,.field textarea.bad{border-color:var(--danger);box-shadow:0 0 0 3px var(--danger-tint);}
+.field input.ok{border-color:var(--sage);}
+.field-msg{font-size:12.5px;color:var(--danger);min-height:0;display:none;}
+.field-msg.show{display:block;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-sans);font-weight:600;font-size:16px;color:#fff;background:var(--saffron);border:1px solid transparent;border-radius:var(--r-pill);padding:14px 22px;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s var(--ease);width:100%;margin-top:4px;}
+.btn:hover{background:var(--saffron-deep);transform:translateY(-1px);box-shadow:var(--shadow-md);}
+.btn:active{transform:translateY(0);box-shadow:var(--shadow-sm);}
+.btn:disabled{background:var(--ink-4);cursor:not-allowed;transform:none;box-shadow:none;}
+.btn .arrow{font-size:18px;line-height:0;}
+.spinner{width:17px;height:17px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.fineprint{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;color:var(--ink-3);margin-top:14px;text-align:center;}
+.formerr{display:none;background:var(--danger-tint);color:var(--danger);border-radius:var(--r-md);padding:11px 14px;font-size:13.5px;font-weight:500;}
+.formerr.show{display:block;}
+
+/* success */
+.success{display:none;text-align:center;padding:14px 10px 6px;}
+.success.show{display:block;animation:rise .5s var(--ease);}
+@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.success .seal{width:78px;height:78px;border-radius:50%;background:var(--positive-tint);color:var(--positive);display:grid;place-items:center;margin:0 auto 20px;}
+.success .seal svg{width:38px;height:38px;}
+.success h3{font-family:var(--font-display);font-weight:600;font-size:32px;margin:0 0 10px;}
+.success h3 i{font-style:italic;color:var(--claret);}
+.success p{font-size:15.5px;color:var(--ink-2);line-height:1.6;max-width:400px;margin:0 auto;}
+
+/* footer */
+.foot{margin-top:auto;padding:48px 0 34px;text-align:center;}
+.foot .q{font-family:var(--font-display);font-style:italic;font-size:18px;color:var(--ink-2);max-width:560px;margin:0 auto 22px;line-height:1.4;}
+.foot .meta{font-size:13px;color:var(--ink-3);}
+.foot .meta a{color:var(--ink-2);text-decoration:none;}
+.foot .meta a:hover{color:var(--ink);}
+
+@media (max-width:560px){
+  .frow{grid-template-columns:1fr;}
+  .card{padding:28px 22px 24px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wrap bar">
+    <a class="lock" href="#">
+      <span class="mk" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" style="width:100%;height:100%">
+          <path d="M9 43 L9 22 A15 15 0 0 1 39 22 L39 43" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M17 43 L17 24 A7 7 0 0 1 31 24 L31 43" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+      </span>
+      <span class="wd">Open<b>Aisle</b></span>
+    </a>
+  </div>
+
+  <div class="wrap hero">
+    <span class="eyebrow"><span class="dot"></span> Coming soon · 2026</span>
+    <h1>A seat at the<br><i>world's</i> celebrations</h1>
+    <p class="lede">We're building a place where curious guests are welcomed into real weddings — and couples open a few seats to share their culture and offset the day.</p>
+    <p class="sub">Are you getting married? Be one of our founding host couples. Tell us about your celebration and we'll reach out when hosting opens.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="rule" aria-hidden="true">
+      <span class="mk">
+        <svg viewBox="0 0 48 48" fill="none" style="width:100%;height:100%">
+          <path d="M9 43 L9 22 A15 15 0 0 1 39 22 L39 43" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M17 43 L17 24 A7 7 0 0 1 31 24 L31 43" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="card">
+      <div class="key" id="formKey">
+        <span class="eyebrow">For couples</span>
+        <h2>Open a few seats at <i>your</i> wedding</h2>
+        <p>Share a little about your celebration. There's no commitment — this just gets you first access and a note from us when we launch.</p>
+      </div>
+
+      <form id="hostForm" novalidate>
+        <div class="formerr" id="formErr"></div>
+        <div class="frow">
+          <div class="field">
+            <label for="firstname">First name <span class="req">*</span></label>
+            <input id="firstname" name="firstname" type="text" placeholder="Priya" autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="lastname">Last name</label>
+            <input id="lastname" name="lastname" type="text" placeholder="Raman" autocomplete="family-name" />
+          </div>
+        </div>
+        <div class="field full">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" inputmode="email" aria-describedby="emailMsg" />
+          <span class="field-msg" id="emailMsg">Please enter a valid email address.</span>
+        </div>
+        <div class="field full">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="+1 555 0142" autocomplete="tel" />
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="tradition">Tradition / culture</label>
+            <input id="tradition" name="tradition" type="text" placeholder="e.g. Tamil, Yoruba, Shinto" />
+          </div>
+          <div class="field">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" placeholder="Jaipur, India" autocomplete="address-level2" />
+          </div>
+        </div>
+        <div class="field full">
+          <label for="weddingdate">Wedding date <span style="color:var(--ink-3);font-weight:400;">(if known)</span></label>
+          <input id="weddingdate" name="weddingdate" type="date" />
+        </div>
+        <div class="field full">
+          <label for="story">Tell us about your celebration</label>
+          <textarea id="story" name="story" placeholder="The rituals, the feast, what makes your day yours…"></textarea>
+        </div>
+
+        <button class="btn" type="submit" id="submitBtn">
+          <span class="label">Join the host list</span>
+          <span class="arrow">&rarr;</span>
+        </button>
+        <div class="fineprint">
+          <span>We'll only use this to tell you when hosting opens. No spam, ever.</span>
+        </div>
+      </form>
+
+      <div class="success" id="success">
+        <div class="seal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're on the <i>host list</i></h3>
+        <p id="successMsg">Thank you for opening your day to us. We've saved your details and will be in touch before hosting opens.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap foot">
+    <p class="q">"You don't visit a culture here — you're handed a seat in it."</p>
+    <p class="meta">&copy; 2026 OpenAisle, Inc. &nbsp;·&nbsp; <a href="mailto:hello@openaisle.com">hello@openaisle.com</a></p>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   Google Sheets wiring (via a free Google Apps Script web app)
+   ------------------------------------------------------------
+   Each submission is appended as a new row in your Google Sheet.
+   No server, no third-party service. One-time setup:
+     1. Create a Google Sheet (this is where submissions land).
+     2. In the Sheet: Extensions → Apps Script.
+     3. Delete any sample code, paste the contents of
+        "google-apps-script.gs" (in this project folder), Save.
+     4. Click Deploy → New deployment → type "Web app".
+          • Execute as:  Me
+          • Who has access:  Anyone
+        Deploy, authorise when prompted, and COPY the Web app URL
+        (it looks like https://script.google.com/macros/s/AKfyc.../exec).
+     5. Paste that URL into webAppUrl below, save this file. Done.
+   Until a real URL is set, the form shows a success message but
+   does NOT send anything (and logs a notice to the console).
+   ============================================================ */
+var SHEETS = {
+  webAppUrl: "https://script.google.com/macros/s/AKfycbzl1n6WoSscBScrUwh57HbfOfVORvUdZsq6NRMUwCB6GgViKBMts73C0nJ-XPxB9A3U/exec"
+};
+
+(function(){
+  var form = document.getElementById('hostForm');
+  var btn = document.getElementById('submitBtn');
+  var errBox = document.getElementById('formErr');
+  var successEl = document.getElementById('success');
+  var formKey = document.getElementById('formKey');
+  var successMsg = document.getElementById('successMsg');
+
+  function showError(msg){ errBox.textContent = msg; errBox.classList.add('show'); }
+  function clearError(){ errBox.classList.remove('show'); }
+  function val(id){ return (document.getElementById(id).value || '').trim(); }
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function isEmail(v){ return EMAIL_RE.test(v); }
+
+  // Live email validation: only flags the field when it actually has input.
+  var emailInput = document.getElementById('email');
+  var emailMsg = document.getElementById('emailMsg');
+  function validateEmailField(){
+    var v = (emailInput.value || '').trim();
+    if(v === ''){                      // empty → no validity styling
+      emailInput.classList.remove('bad','ok');
+      emailMsg.classList.remove('show');
+      return true;
+    }
+    if(isEmail(v)){
+      emailInput.classList.remove('bad'); emailInput.classList.add('ok');
+      emailMsg.classList.remove('show');
+      return true;
+    }
+    emailInput.classList.add('bad'); emailInput.classList.remove('ok');
+    emailMsg.classList.add('show');
+    return false;
+  }
+  // validate when leaving the field; re-check live once it's been flagged
+  emailInput.addEventListener('blur', validateEmailField);
+  emailInput.addEventListener('input', function(){
+    if(emailInput.classList.contains('bad') || emailInput.classList.contains('ok')) validateEmailField();
+  });
+
+  function setLoading(on){
+    btn.disabled = on;
+    btn.querySelector('.label').textContent = on ? 'Sending…' : 'Join the host list';
+    var arrow = btn.querySelector('.arrow');
+    if(on){ arrow.outerHTML = '<span class="spinner arrow"></span>'; }
+  }
+
+  function buildFormData(){
+    // one key per column in the sheet; the Apps Script maps these by name
+    var data = {
+      firstname:   val('firstname'),
+      lastname:    val('lastname'),
+      email:       val('email'),
+      phone:       val('phone'),
+      tradition:   val('tradition'),
+      city:        val('city'),
+      weddingdate: val('weddingdate'),
+      story:       val('story')
+    };
+    var fd = new FormData();
+    Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
+    // useful context for the row
+    fd.append('source', location.href);
+    return fd;
+  }
+
+  function showSuccess(name){
+    formKey.style.display = 'none';
+    form.style.display = 'none';
+    if(name){ successMsg.textContent = 'Thank you, ' + name + ', for opening your day to us. We’ve saved your details and will be in touch before hosting opens.'; }
+    successEl.classList.add('show');
+    successEl.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    clearError();
+    ['firstname','email'].forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
+
+    var first = val('firstname'), email = val('email');
+    if(!first){ document.getElementById('firstname').classList.add('bad'); showError('Please add your first name.'); return; }
+    if(!email){ emailInput.classList.add('bad'); emailMsg.classList.add('show'); showError('Please enter your email address.'); emailInput.focus(); return; }
+    if(!validateEmailField()){ showError('Please enter a valid email address.'); emailInput.focus(); return; }
+
+    // No web app URL yet → demo mode (don't fire a request at a placeholder).
+    if(!SHEETS.webAppUrl || SHEETS.webAppUrl.indexOf('PASTE') === 0){
+      console.warn('[OpenAisle] Google Sheets webAppUrl is not set — submission was NOT saved. ' +
+        'Deploy the Apps Script web app and paste its URL into SHEETS.webAppUrl in this file.');
+      showSuccess(first);
+      return;
+    }
+
+    setLoading(true);
+    // Send as FormData (a "simple" request) so the browser skips the CORS
+    // preflight that Apps Script can't answer. Apps Script then returns its
+    // reply via a cross-origin redirect the browser won't let us read (this is
+    // what caused the false "something went wrong"), so we use mode:'no-cors':
+    // the row is still written — we just can't read the response, so a
+    // completed request is treated as success.
+    fetch(SHEETS.webAppUrl, { method:'POST', mode:'no-cors', body: buildFormData() })
+    .then(function(){ showSuccess(first); })
+    .catch(function(err){
+      console.error('[OpenAisle] Google Sheets submission failed:', err);
+      setLoading(false);
+      showError('Something went wrong saving your details. Please try again, or email hello@openaisle.com.');
+    });
+  });
+})();
+</script>
+</body>
+</html>
